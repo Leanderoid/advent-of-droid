@@ -7,6 +7,7 @@ import com.leanderoid.adventofdroid.solver.year2020.Day1Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day2Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
+import com.leanderoid.adventofdroid.solver.year2021.Y21Day1Solver
 
 class SolverRepository(context: Context) {
 
@@ -16,6 +17,10 @@ class SolverRepository(context: Context) {
         Day2Solver(),
         Day3Solver(),
         Day4Solver(),
+    )
+
+    private val solver2021List = listOf(
+        Y21Day1Solver(),
     )
 
     val solverManagers = listOf(
@@ -83,9 +88,15 @@ class SolverRepository(context: Context) {
 
     val solverManagers2021 = listOf(
         SolverStateManager(
-            title = "Day1 p1, test data 2021",
-            description = "Find two values in a list that adds up to a specific number. Multiply these values.",
-            invokeSolver = { solverList[0].solveAndFormat(FileUtils.getFile(context, "data/year2020/day1testinput.txt")) },
+            title = "Day1 p1",
+            description = "Find how many values in list that are higher than the previous.",
+            invokeSolver = { solver2021List[0].solveAndFormat(FileUtils.getFile(context, "data/year2021/day1.txt")) },
+            image = R.drawable.ic_launcher_foreground
+        ),
+        SolverStateManager(
+            title = "Day1 p2",
+            description = "Find how many values in a list with averaged windows, that are higher than the previous.",
+            invokeSolver = { solver2021List[0].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day1.txt")) },
             image = R.drawable.ic_launcher_foreground
         ),
     )

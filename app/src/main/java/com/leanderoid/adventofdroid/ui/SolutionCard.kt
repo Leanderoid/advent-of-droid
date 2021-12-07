@@ -11,7 +11,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -52,7 +54,7 @@ fun SolutionCard(msg: SolverStateManager) {
         )
         Spacer(modifier = Modifier.width(28.dp))
 
-        var isExpanded by remember { mutableStateOf(false) }
+        val isExpanded by msg.isExpanded.collectAsState()
         // surfaceColor will be updated gradually
         val surfaceColor: Color by animateColorAsState(
             if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface,
@@ -64,7 +66,7 @@ fun SolutionCard(msg: SolverStateManager) {
         val text = if (isExpanded) "${msg.description}\n${solutionText}" else msg.description
         println("Clicked, isExpanded = $isExpanded")
         // Toggle isExpanded when clicking on the Column
-        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
+        Column(modifier = Modifier.clickable { msg.toggleExpanded() }) {
             Text(
                 text = msg.title,
                 color = MaterialTheme.colors.secondary

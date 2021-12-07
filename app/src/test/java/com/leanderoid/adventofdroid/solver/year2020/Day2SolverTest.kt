@@ -1,4 +1,4 @@
-package com.leanderoid.adventofdroid
+package com.leanderoid.adventofdroid.solver.year2020
 
 import com.leanderoid.adventofdroid.utils.FileUtils.toInputStream
 import com.leanderoid.adventofdroid.solver.year2020.Day2Solver
