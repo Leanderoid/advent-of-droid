@@ -21,6 +21,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.leanderoid.adventofdroid.R
+import com.leanderoid.adventofdroid.data.SolverStateManager
 import com.leanderoid.adventofdroid.ui.theme.AdventOfDroidTheme
 
 @Composable
@@ -34,8 +36,8 @@ fun Home(
     LazyColumn(
         modifier = Modifier.padding(top = 40.dp)
     ) {
-        items(viewModel.getSolvers()) { message ->
-            MessageCard(message)
+        items(viewModel.getSolvers()) { solverData ->
+            SolutionCard(solverData)
         }
     }
 }
@@ -49,17 +51,16 @@ fun Home(
 @Composable
 fun PreviewMessageCard() {
     AdventOfDroidTheme {
-        MessageCard(
-            SolverData({ "Hey, take a look at Jetpack Compose, it's great!" },
-            image = com.leanderoid.adventofdroid.R.drawable.ic_launcher_foreground)
+        SolutionCard(
+            SolverStateManager({ "Test" },
+            image = R.drawable.ic_launcher_foreground)
         )
     }
 }
 
 @Composable
-fun MessageCard(msg: SolverData) {
+fun SolutionCard(msg: SolverStateManager) {
     Row(modifier = Modifier.padding(all = 20.dp)) {
-
         Image(
             modifier = Modifier
                 .size(40.dp)
@@ -71,17 +72,18 @@ fun MessageCard(msg: SolverData) {
         )
         Spacer(modifier = Modifier.width(28.dp))
 
-        // We keep track if the message is expanded or not in this
-        // variable
         var isExpanded by remember { mutableStateOf(false) }
-        // surfaceColor will be updated gradually from one color to the other
+        // surfaceColor will be updated gradually
         val surfaceColor: Color by animateColorAsState(
             if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface,
         )
 
-            val text = if (isExpanded) "${msg.description}\n${msg.invokeSolver()}" else msg.description
+        val solutionText by msg.solutionState.collectAsState()
+        if (isExpanded) msg.calcSolution()
 
-        // We toggle the isExpanded variable when we click on this Column
+        val text = if (isExpanded) "${msg.description}\n${solutionText}" else msg.description
+        println("Clicked, isExpanded = $isExpanded")
+        // Toggle isExpanded when clicking on the Column
         Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(
                 text = msg.title,
@@ -92,21 +94,15 @@ fun MessageCard(msg: SolverData) {
             Surface(
                 shape = MaterialTheme.shapes.medium,
                 elevation = 1.dp,
-                // surfaceColor color will be changing gradually from primary to surface
                 color = surfaceColor,
-                // animateContentSize will change the Surface size gradually
                 modifier = Modifier.animateContentSize().padding(1.dp),
             ) {
                 Text(
                     text = text,
                     modifier = Modifier.padding(all = 4.dp),
-                    // If the message is expanded, we display all its content
-                    // otherwise we only display the first line
-                    //maxLines = if (isExpanded) Int.MAX_VALUE else 1,
                     style = MaterialTheme.typography.body2
                 )
             }
         }
     }
 }
-
