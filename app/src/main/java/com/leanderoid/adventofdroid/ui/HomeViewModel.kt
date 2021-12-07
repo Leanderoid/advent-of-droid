@@ -3,8 +3,8 @@ package com.leanderoid.adventofdroid.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.leanderoid.adventofdroid.ObjectGraph
-import com.leanderoid.adventofdroid.data.SolverRepository
-import com.leanderoid.adventofdroid.data.SolverStateManager
+import com.leanderoid.adventofdroid.solver.SolverRepository
+import com.leanderoid.adventofdroid.solver.SolverStateManager
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 

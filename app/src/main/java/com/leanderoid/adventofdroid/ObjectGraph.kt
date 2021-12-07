@@ -1,7 +1,7 @@
 package com.leanderoid.adventofdroid
 
 import android.content.Context
-import com.leanderoid.adventofdroid.data.SolverRepository
+import com.leanderoid.adventofdroid.solver.SolverRepository
 
 /**
  * A simple global singleton dependency graph.

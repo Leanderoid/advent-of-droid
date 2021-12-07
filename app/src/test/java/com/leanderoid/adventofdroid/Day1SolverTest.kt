@@ -1,7 +1,7 @@
 package com.leanderoid.adventofdroid
 
 import com.leanderoid.adventofdroid.utils.FileUtils.toInputStream
-import com.leanderoid.adventofdroid.year2020.Day1Solver
+import com.leanderoid.adventofdroid.solver.year2020.Day1Solver
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

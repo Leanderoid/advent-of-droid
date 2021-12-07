@@ -1,7 +1,6 @@
-package com.leanderoid.adventofdroid.year2020
+package com.leanderoid.adventofdroid.solver.year2020
 
-import com.leanderoid.adventofdroid.data.Solver
-import com.leanderoid.adventofdroid.utils.FileUtils
+import com.leanderoid.adventofdroid.solver.Solver
 import java.io.BufferedReader
 import java.io.InputStream
 

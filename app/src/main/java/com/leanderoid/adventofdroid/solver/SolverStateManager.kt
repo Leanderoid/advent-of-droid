@@ -1,4 +1,4 @@
-package com.leanderoid.adventofdroid.data
+package com.leanderoid.adventofdroid.solver
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow

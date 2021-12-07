@@ -1,4 +1,4 @@
-package com.leanderoid.adventofdroid.data
+package com.leanderoid.adventofdroid.solver
 
 import java.io.InputStream
 

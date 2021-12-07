@@ -1,12 +1,12 @@
-package com.leanderoid.adventofdroid.data
+package com.leanderoid.adventofdroid.solver
 
 import android.content.Context
 import com.leanderoid.adventofdroid.R
 import com.leanderoid.adventofdroid.utils.FileUtils
-import com.leanderoid.adventofdroid.year2020.Day1Solver
-import com.leanderoid.adventofdroid.year2020.Day2Solver
-import com.leanderoid.adventofdroid.year2020.Day3Solver
-import com.leanderoid.adventofdroid.year2020.Day4Solver
+import com.leanderoid.adventofdroid.solver.year2020.Day1Solver
+import com.leanderoid.adventofdroid.solver.year2020.Day2Solver
+import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
+import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
 
 class SolverRepository(context: Context) {
 

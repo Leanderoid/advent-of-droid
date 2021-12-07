@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.leanderoid.adventofdroid.R
-import com.leanderoid.adventofdroid.data.SolverStateManager
+import com.leanderoid.adventofdroid.solver.SolverStateManager
 import com.leanderoid.adventofdroid.ui.theme.AdventOfDroidTheme
 
 @Preview(name = "Light Mode", showBackground = true)
