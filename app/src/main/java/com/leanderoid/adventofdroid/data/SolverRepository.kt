@@ -80,4 +80,13 @@ class SolverRepository(context: Context) {
             image = R.drawable.ic_launcher_foreground
         ),
     )
+
+    val solverManagers2021 = listOf(
+        SolverStateManager(
+            title = "Day1 p1, test data 2021",
+            description = "Find two values in a list that adds up to a specific number. Multiply these values.",
+            invokeSolver = { solverList[0].solveAndFormat(FileUtils.getFile(context, "data/year2020/day1testinput.txt")) },
+            image = R.drawable.ic_launcher_foreground
+        ),
+    )
 }

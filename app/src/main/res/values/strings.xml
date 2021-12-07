@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AdventOfDroid</string>
+    <string name="year2020">2020</string>
+    <string name="year2021">2021</string>
 </resources>
