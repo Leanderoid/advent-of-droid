@@ -28,11 +28,13 @@ fun Home(
     val homeCategories = viewState.homeCategories
     val selectedHomeCategory = viewState.selectedHomeCategory
 
+    val colorVariant =
+        if (selectedHomeCategory == HomeCategory.Year2020) MaterialTheme.colors.primary else MaterialTheme.colors.secondaryVariant
     Text(
         text = "Advent of Droid",
         modifier = Modifier
             .padding(all = 20.dp),
-        color = if (selectedHomeCategory == HomeCategory.Year2020) MaterialTheme.colors.primary else MaterialTheme.colors.primaryVariant
+        color = colorVariant
     )
 
     if (homeCategories.isNotEmpty()) {
@@ -48,7 +50,7 @@ fun Home(
         modifier = Modifier.padding(top = 100.dp)
     ) {
         items(viewState.solvers) { solverData ->
-            SolutionCard(solverData)
+            SolutionCard(solverData, colorVariant)
         }
     }
 }

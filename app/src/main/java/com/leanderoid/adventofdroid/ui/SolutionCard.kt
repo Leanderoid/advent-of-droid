@@ -41,7 +41,10 @@ fun PreviewMessageCard() {
 }
 
 @Composable
-fun SolutionCard(msg: SolverStateManager) {
+fun SolutionCard(
+    manager: SolverStateManager,
+    titleColor: Color = MaterialTheme.colors.secondary,
+) {
     Row(modifier = Modifier.padding(all = 20.dp)) {
         Image(
             modifier = Modifier
@@ -49,27 +52,27 @@ fun SolutionCard(msg: SolverStateManager) {
                 .clip(CircleShape)
                 .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape),
 
-            painter = painterResource(id = msg.image),
+            painter = painterResource(id = manager.image),
             contentDescription = "Description"
         )
         Spacer(modifier = Modifier.width(28.dp))
 
-        val isExpanded by msg.isExpanded.collectAsState()
+        val isExpanded by manager.isExpanded.collectAsState()
         // surfaceColor will be updated gradually
         val surfaceColor: Color by animateColorAsState(
             if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface,
         )
 
-        val solutionText by msg.solutionState.collectAsState()
-        if (isExpanded) msg.calcSolution()
+        val solutionText by manager.solutionState.collectAsState()
+        if (isExpanded) manager.calcSolution()
 
-        val text = if (isExpanded) "${msg.description}\n${solutionText}" else msg.description
+        val text = if (isExpanded) "${manager.description}\n${solutionText}" else manager.description
         println("Clicked, isExpanded = $isExpanded")
         // Toggle isExpanded when clicking on the Column
-        Column(modifier = Modifier.clickable { msg.toggleExpanded() }) {
+        Column(modifier = Modifier.clickable { manager.toggleExpanded() }) {
             Text(
-                text = msg.title,
-                color = MaterialTheme.colors.secondary
+                text = manager.title,
+                color = titleColor,
             )
             Spacer(modifier = Modifier.height(4.dp))
 
