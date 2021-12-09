@@ -8,6 +8,8 @@ import com.leanderoid.adventofdroid.solver.year2020.Day2Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
 import com.leanderoid.adventofdroid.solver.year2021.Y21Day1Solver
+import com.leanderoid.adventofdroid.solver.year2021.Y21Day2Solver
+import com.leanderoid.adventofdroid.solver.year2021.Y21Day3Solver
 
 class SolverRepository(context: Context) {
 
@@ -21,6 +23,8 @@ class SolverRepository(context: Context) {
 
     private val solver2021List = listOf(
         Y21Day1Solver(),
+        Y21Day2Solver(),
+        Y21Day3Solver(),
     )
 
     val solverManagers = listOf(
@@ -91,13 +95,31 @@ class SolverRepository(context: Context) {
             title = "Day1 p1",
             description = "Find how many values in list that are higher than the previous.",
             invokeSolver = { solver2021List[0].solveAndFormat(FileUtils.getFile(context, "data/year2021/day1.txt")) },
-            image = R.drawable.ic_launcher_foreground
         ),
         SolverStateManager(
             title = "Day1 p2",
             description = "Find how many values in a list with averaged windows, that are higher than the previous.",
             invokeSolver = { solver2021List[0].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day1.txt")) },
-            image = R.drawable.ic_launcher_foreground
+        ),
+        SolverStateManager(
+            title = "Day2 p1",
+            description = "Calculate direction. Multiply x and y.",
+            invokeSolver = { solver2021List[1].solveAndFormat(FileUtils.getFile(context, "data/year2021/day2.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day2 p2",
+            description = "Calculate direction with changed rules. Multiply x and y.",
+            invokeSolver = { solver2021List[1].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day2.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day3 p1",
+            description = "Filter binary strings and convert to decimal. Multiply x and y.",
+            invokeSolver = { solver2021List[2].solveAndFormat(FileUtils.getFile(context, "data/year2021/day3.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day3 p2",
+            description = "Advanced filtering of binary strings, convert to decimal. Multiply x and y.",
+            invokeSolver = { solver2021List[2].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day3.txt")) },
         ),
     )
 }

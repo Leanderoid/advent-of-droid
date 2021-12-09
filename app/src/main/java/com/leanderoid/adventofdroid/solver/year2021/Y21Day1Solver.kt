@@ -6,17 +6,13 @@ import java.io.InputStream
 
 class Y21Day1Solver : Solver {
 
-    fun solve(stream: InputStream): Int = FileUtils.streamToList(stream)
-        .map(String::toInt)
-        .countIncreases()
-
-    private fun List<Int>.countIncreases(): Int = foldIndexed(0) { index, acc, elem ->
-        if (index > 0 && elem > this[index - 1]) acc + 1 else acc
-    }
-
     override fun solveAndFormat(stream: InputStream): String = solve(stream).toString()
 
     override fun solveAndFormatPart2(stream: InputStream): String = solvePart2(stream).toString()
+
+    fun solve(stream: InputStream): Int = FileUtils.streamToList(stream)
+        .map(String::toInt)
+        .countIncreases()
 
     fun solvePart2(stream: InputStream): Int {
         val list = FileUtils.streamToList(stream).map(String::toInt)
@@ -26,4 +22,9 @@ class Y21Day1Solver : Solver {
             .map { it.reduce { acc, i -> acc + i } }
             .countIncreases()
     }
+
+    private fun List<Int>.countIncreases(): Int = foldIndexed(0) { index, acc, elem ->
+        if (index > 0 && elem > this[index - 1]) acc + 1 else acc
+    }
+
 }
