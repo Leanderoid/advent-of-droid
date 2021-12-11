@@ -1,46 +1,51 @@
 package com.leanderoid.adventofdroid.solver.year2021
 
 import com.leanderoid.adventofdroid.solver.Solver
+import com.leanderoid.adventofdroid.solver.SolverResult
 import com.leanderoid.adventofdroid.utils.FileUtils
 import java.io.InputStream
 import kotlin.math.pow
 
 class Y21Day3Solver : Solver {
     override fun solveAndFormat(stream: InputStream): String {
-        return solve(stream).toString()
+        val (a, b, answer) = solve(stream)
+        return "$a * $b = $answer"
     }
 
     override fun solveAndFormatPart2(stream: InputStream): String {
-        return solvePart2(stream).toString()
+        val (a, b, answer) = solvePart2(stream)
+        return "$a * $b = $answer"
     }
 
-    fun solve(stream: InputStream): Int {
+    fun solve(stream: InputStream): SolverResult {
         val lines = FileUtils.streamToList(stream)
 
-        val gamma = lines.xIndexes().map {
+        val gamma = lines.xIndices().map {
             if (countInColumn(it, lines, '1') >= lines.size / 2) 1 else 0
         }
 
         val epsilon = gamma.flipBits()
 
-        return gamma.toBinString().binToDecimal().toInt() * epsilon.toBinString().binToDecimal().toInt()
+        val gammaInt = gamma.toBinString().binToDecimal().toInt()
+        val epsilonInt = epsilon.toBinString().binToDecimal().toInt()
+        return SolverResult(gammaInt, epsilonInt,gammaInt * epsilonInt)
     }
 
-    fun solvePart2(stream: InputStream): Int {
+    fun solvePart2(stream: InputStream): SolverResult {
         val lines = FileUtils.streamToList(stream)
 
         val genRating = calcRating(lines) { list: List<String>, count: Int ->  count >= list.size / 2.0 }
 
         val scrubberRating = calcRating(lines) { list: List<String>, count: Int -> count < list.size / 2.0 }
 
-        return genRating * scrubberRating
+        return SolverResult(genRating, scrubberRating, genRating * scrubberRating)
     }
 
     private fun calcRating(
         list: List<String>,
         predicate: (List<String>, Int) -> Boolean
     ): Int {
-        val filteredList = list.xIndexes().fold(list) { currentList, x ->
+        val filteredList = list.xIndices().fold(list) { currentList, x ->
             val count = countInColumn(x, currentList, '1')
 
             val ch = if (predicate(currentList, count)) 1 else 0
@@ -66,14 +71,14 @@ class Y21Day3Solver : Solver {
     private fun List<Int>.flipBits(): List<Int> = map { (it + 1) % 2 }
 
     private fun countInColumn(x: Int, lines: List<String>, c: Char): Int =
-        lines.yIndexes().count { y -> lines[y][x] == c }
+        lines.yIndices().count { y -> lines[y][x] == c }
 
     private fun String.binToDecimal(): Double =
         reversed().foldIndexed(0.0) { i, acc, c ->
             acc + c.toString().toInt() * 2.0.pow(i)
         }
 
-    private fun List<String>.xIndexes() = 0..first().lastIndex
-    private fun List<String>.yIndexes() = 0..lastIndex
+    private fun List<String>.xIndices() = 0..first().lastIndex
+    private fun List<String>.yIndices() = indices
 }
 

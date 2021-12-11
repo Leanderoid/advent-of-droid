@@ -10,6 +10,7 @@ import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
 import com.leanderoid.adventofdroid.solver.year2021.Y21Day1Solver
 import com.leanderoid.adventofdroid.solver.year2021.Y21Day2Solver
 import com.leanderoid.adventofdroid.solver.year2021.Y21Day3Solver
+import com.leanderoid.adventofdroid.solver.year2021.Y21Day4Solver
 
 class SolverRepository(context: Context) {
 
@@ -25,6 +26,7 @@ class SolverRepository(context: Context) {
         Y21Day1Solver(),
         Y21Day2Solver(),
         Y21Day3Solver(),
+        Y21Day4Solver(),
     )
 
     val solverManagers = listOf(
@@ -120,6 +122,16 @@ class SolverRepository(context: Context) {
             title = "Day3 p2",
             description = "Advanced filtering of binary strings, convert to decimal. Multiply x and y.",
             invokeSolver = { solver2021List[2].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day3.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day4 p1",
+            description = "Play bingo. Multiply the sum of unmarked numbers and the last drawn one.",
+            invokeSolver = { solver2021List[3].solveAndFormat(FileUtils.getFile(context, "data/year2021/day4.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day4 p2",
+            description = "Play bingo, let last board win. Multiply the sum of unmarked numbers and the last drawn one.",
+            invokeSolver = { solver2021List[3].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day4.txt")) },
         ),
     )
 }

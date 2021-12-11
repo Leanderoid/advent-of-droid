@@ -1,15 +1,16 @@
 package com.leanderoid.adventofdroid.solver.year2020
 
 import com.leanderoid.adventofdroid.solver.Solver
+import com.leanderoid.adventofdroid.solver.SolverResult
 import com.leanderoid.adventofdroid.utils.FileUtils.streamToList
 import java.io.InputStream
 
 class Day1Solver: Solver {
 
     override fun solveAndFormat(stream: InputStream): String {
-        val (values, product) = solve(stream)
+        val (a, b, product) = solve(stream)
 
-        return "${values.first} * ${values.second} = $product"
+        return "$a * $b = $product"
     }
 
     override fun solveAndFormatPart2(stream: InputStream): String {
@@ -18,7 +19,7 @@ class Day1Solver: Solver {
         return "${values.first} * ${values.second} * ${values.third} = $product"
     }
 
-    fun solve(stream: InputStream): Pair<Pair<Int, Int>, Int> {
+    fun solve(stream: InputStream): SolverResult {
         val values = streamToList(stream).map(String::toInt)
 
         var result: Pair<Int, Int> = Pair(0, 0)
@@ -34,7 +35,7 @@ class Day1Solver: Solver {
         }
 
         val product = result.first * result.second
-        return Pair(result, product)
+        return SolverResult(result.first, result.second, product)
     }
 
     fun solvePart2(stream: InputStream): Pair<Triple<Int, Int, Int>, Int> {

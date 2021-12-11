@@ -12,7 +12,7 @@ class Y21Day3SolverTest {
         val inputStream = "src/main/assets/data/year2021/day3testinput.txt".toInputStream()
 
         // Act
-        val value = Y21Day3Solver().solve(inputStream)
+        val value = Y21Day3Solver().solve(inputStream).answer
 
         // Assert
         Assert.assertEquals(198, value)
@@ -24,7 +24,7 @@ class Y21Day3SolverTest {
         val inputStream = "src/main/assets/data/year2021/day3.txt".toInputStream()
 
         // Act
-        val value = Y21Day3Solver().solve(inputStream)
+        val value = Y21Day3Solver().solve(inputStream).answer
 
         // Assert
         println("value: $value")
@@ -37,7 +37,7 @@ class Y21Day3SolverTest {
         val inputStream = "src/main/assets/data/year2021/day3testinput.txt".toInputStream()
 
         // Act
-        val value = Y21Day3Solver().solvePart2(inputStream)
+        val value = Y21Day3Solver().solvePart2(inputStream).answer
 
         // Assert
         Assert.assertEquals(230, value)
@@ -49,7 +49,7 @@ class Y21Day3SolverTest {
         val inputStream = "src/main/assets/data/year2021/day3.txt".toInputStream()
 
         // Act
-        val value = Y21Day3Solver().solvePart2(inputStream)
+        val value = Y21Day3Solver().solvePart2(inputStream).answer
 
         // Assert
         println("value: $value")

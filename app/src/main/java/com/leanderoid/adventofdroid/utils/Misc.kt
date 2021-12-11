@@ -1,0 +1,1 @@
+package com.leanderoid.adventofdroid.utils

@@ -14,7 +14,7 @@ class SolverStateManager(
     // Set this as a lifecycle aware scope
     lateinit var coroutineScope: CoroutineScope
 
-    private var _isExpanded = MutableStateFlow(false) // false // by remember { mutableStateOf(false) }
+    private var _isExpanded = MutableStateFlow(false)
     val isExpanded: StateFlow<Boolean>
         get() = _isExpanded
 
@@ -34,7 +34,7 @@ class SolverStateManager(
         _solutionState.value = "Calculating..."
 
         coroutineScope.launch {
-            _solutionState.value = invokeSolver()
+            _solutionState.value = "Ans: ${invokeSolver()}"
         }
     }
 }
