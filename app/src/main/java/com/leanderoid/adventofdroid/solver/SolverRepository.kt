@@ -7,10 +7,7 @@ import com.leanderoid.adventofdroid.solver.year2020.Day1Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day2Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
-import com.leanderoid.adventofdroid.solver.year2021.Y21Day1Solver
-import com.leanderoid.adventofdroid.solver.year2021.Y21Day2Solver
-import com.leanderoid.adventofdroid.solver.year2021.Y21Day3Solver
-import com.leanderoid.adventofdroid.solver.year2021.Y21Day4Solver
+import com.leanderoid.adventofdroid.solver.year2021.*
 
 class SolverRepository(context: Context) {
 
@@ -27,6 +24,7 @@ class SolverRepository(context: Context) {
         Y21Day2Solver(),
         Y21Day3Solver(),
         Y21Day4Solver(),
+        Y21Day5Solver(),
     )
 
     val solverManagers = listOf(
@@ -132,6 +130,16 @@ class SolverRepository(context: Context) {
             title = "Day4 p2",
             description = "Play bingo, let last board win. Multiply the sum of unmarked numbers and the last drawn one.",
             invokeSolver = { solver2021List[3].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day4.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day5 p1",
+            description = "Find overlapping lines on map.",
+            invokeSolver = { solver2021List[4].solveAndFormat(FileUtils.getFile(context, "data/year2021/day5.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day5 p2",
+            description = "Find overlapping lines on map, including diagonal ones.",
+            invokeSolver = { solver2021List[4].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day5.txt")) },
         ),
     )
 }

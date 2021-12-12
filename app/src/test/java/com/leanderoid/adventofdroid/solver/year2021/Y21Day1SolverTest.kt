@@ -7,7 +7,7 @@ import org.junit.Test
 class Y21Day1SolverTest {
 
     @Test
-    fun day1_testData() {
+    fun part1_testData() {
         // Arrange
         val inputStream = "src/main/assets/data/year2021/day1testinput.txt".toInputStream()
 
@@ -19,7 +19,7 @@ class Y21Day1SolverTest {
     }
 
     @Test
-    fun day1() {
+    fun part1() {
         // Arrange
         val inputStream = "src/main/assets/data/year2021/day1.txt".toInputStream()
 
@@ -32,7 +32,7 @@ class Y21Day1SolverTest {
     }
 
     @Test
-    fun day1_part2_testData() {
+    fun part2_testData() {
         // Arrange
         val inputStream = "src/main/assets/data/year2021/day1testinput.txt".toInputStream()
 
@@ -44,7 +44,7 @@ class Y21Day1SolverTest {
     }
 
     @Test
-    fun day1_part2() {
+    fun part2() {
         // Arrange
         val inputStream = "src/main/assets/data/year2021/day1.txt".toInputStream()
 
