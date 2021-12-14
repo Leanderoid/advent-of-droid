@@ -25,6 +25,7 @@ class SolverRepository(context: Context) {
         Y21Day3Solver(),
         Y21Day4Solver(),
         Y21Day5Solver(),
+        Y21Day6Solver(),
     )
 
     val solverManagers = listOf(
@@ -140,6 +141,16 @@ class SolverRepository(context: Context) {
             title = "Day5 p2",
             description = "Find overlapping lines on map, including diagonal ones.",
             invokeSolver = { solver2021List[4].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day5.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day6 p1",
+            description = "Calculate the number of fish after 80 days.",
+            invokeSolver = { solver2021List[5].solveAndFormat(FileUtils.getFile(context, "data/year2021/day6.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day6 p2",
+            description = "Calculate the number of fish after 256 days.",
+            invokeSolver = { solver2021List[5].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day6.txt")) },
         ),
     )
 }
