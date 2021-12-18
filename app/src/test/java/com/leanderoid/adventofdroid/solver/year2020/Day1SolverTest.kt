@@ -16,7 +16,7 @@ class Day1SolverTest {
         val inputStream = "src/main/assets/data/year2020/day1testinput.txt".toInputStream()
 
         // Act
-        val (values, product) = Day1Solver().solve(inputStream)
+        val (_, _, product) = Day1Solver().solve(inputStream)
 
         // Assert
         assertEquals(514579, product)
@@ -26,7 +26,7 @@ class Day1SolverTest {
     fun day1() {
         val inputStream = "src/main/assets/data/year2020/day1.txt".toInputStream()
 
-        val (values, product) = Day1Solver().solve(inputStream)
+        val (_, _, product) = Day1Solver().solve(inputStream)
 
         assertEquals(786811, product)
 

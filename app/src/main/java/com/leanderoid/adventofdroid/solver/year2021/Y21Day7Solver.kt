@@ -15,7 +15,7 @@ class Y21Day7Solver : Solver {
     }
 
     fun solve(stream: InputStream): Int {
-        return calcLeastFuel(stream) { acc: Int, pos: Int, crab: Int -> acc + abs(pos - crab) }
+        return calcLeastFuel(stream) { pos: Int, crab: Int -> abs(pos - crab) }
     }
 
     /*
@@ -32,13 +32,12 @@ class Y21Day7Solver : Solver {
     * 0..deltaPos.fold(0) { acc, i -> acc + i }
     */
     fun solvePart2(stream: InputStream): Int {
-        fun costFunction(pos: Int, crab: Int) = (0..abs(pos - crab))
-            .fold(0) { acc, stepNr -> acc + stepNr }
-
-        return calcLeastFuel(stream) { acc: Int, pos: Int, crab: Int -> acc + costFunction(pos, crab) }
+        return calcLeastFuel(stream) { pos: Int, crab: Int ->
+            (0..abs(pos - crab)).fold(0) { acc, stepNr -> acc + stepNr }
+        }
     }
 
-    private fun calcLeastFuel(stream: InputStream, fuelCalcStrategy: (Int, Int, Int) -> Int): Int {
+    private fun calcLeastFuel(stream: InputStream, fuelCalcStrategy: (Int, Int) -> Int): Int {
         val list =
             FileUtils.streamToList(stream).first().splitToSequence(",").toList().map(String::toInt)
 
@@ -47,7 +46,7 @@ class Y21Day7Solver : Solver {
         val range = min..max
 
         val fuelCandidateList = range.map { pos ->
-            list.fold(0) { acc, crab -> fuelCalcStrategy(acc, pos, crab) }
+            list.fold(0) { acc, crab -> acc + fuelCalcStrategy(pos, crab) }
         }
 
         return fuelCandidateList.minOrNull() ?: -1
