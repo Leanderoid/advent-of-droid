@@ -25,7 +25,7 @@ class Y21Day6Solver : Solver {
         val list = FileUtils.streamToList(stream)[0].splitToSequence(",").map(String::toInt).toList()
 
         val all = calcDaysMoreEfficient(nrOfDays, list)
-        // val all = calcForDays(nrOfDays, list)
+        //val all = calcDays(nrOfDays, list).count().toLong()
 
         return all
     }
@@ -47,7 +47,7 @@ class Y21Day6Solver : Solver {
     private fun calcDays(
         nrOfDays: Int,
         list: List<Int>
-    ) = (1..nrOfDays).foldIndexed(list) { index, acc, timer ->
+    ) = (1..nrOfDays).fold(list) { acc, _ ->
         val newFish = mutableListOf<Int>()
         val newAcc = acc.map {
             if (it == 0) {

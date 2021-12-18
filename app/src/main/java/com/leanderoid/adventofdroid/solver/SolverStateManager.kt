@@ -1,9 +1,11 @@
 package com.leanderoid.adventofdroid.solver
 
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SolverStateManager(
     val invokeSolver: () -> String,
@@ -34,7 +36,11 @@ class SolverStateManager(
         _solutionState.value = "Calculating..."
 
         coroutineScope.launch {
-            _solutionState.value = "Ans: ${invokeSolver()}"
+            val solution = withContext(Dispatchers.IO) {
+                invokeSolver()
+            }
+            
+            _solutionState.value = "Ans: $solution"
         }
     }
 }

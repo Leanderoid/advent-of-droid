@@ -26,6 +26,7 @@ class SolverRepository(context: Context) {
         Y21Day4Solver(),
         Y21Day5Solver(),
         Y21Day6Solver(),
+        Y21Day7Solver(),
     )
 
     val solverManagers = listOf(
@@ -151,6 +152,16 @@ class SolverRepository(context: Context) {
             title = "Day6 p2",
             description = "Calculate the number of fish after 256 days.",
             invokeSolver = { solver2021List[5].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day6.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day7 p1",
+            description = "Calculate the least possible fuel.",
+            invokeSolver = { solver2021List[6].solveAndFormat(FileUtils.getFile(context, "data/year2021/day7.txt")) },
+        ),
+        SolverStateManager(
+            title = "Day7 p2",
+            description = "Calculate the least possible fuel, more advanced cost function.",
+            invokeSolver = { solver2021List[6].solveAndFormatPart2(FileUtils.getFile(context, "data/year2021/day7.txt")) },
         ),
     )
 }
