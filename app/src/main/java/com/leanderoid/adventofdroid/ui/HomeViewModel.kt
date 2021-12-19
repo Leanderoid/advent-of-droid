@@ -14,7 +14,7 @@ class HomeViewModel(
 
     private val selectedCategory = MutableStateFlow(HomeCategory.Year2020)
     private val categories = MutableStateFlow(HomeCategory.values().asList())
-    private val solvers = MutableStateFlow(initSolvers(solverRepository.solverManagers))
+    private val solvers = MutableStateFlow(initSolvers(solverRepository.solverManagers2020))
 
     private val _state = MutableStateFlow(HomeViewState())
     val state: StateFlow<HomeViewState>
@@ -43,7 +43,7 @@ class HomeViewModel(
     fun onHomeCategorySelected(category: HomeCategory) {
         selectedCategory.value = category
         solvers.value = when (category) {
-            HomeCategory.Year2020 -> initSolvers(solverRepository.solverManagers)
+            HomeCategory.Year2020 -> initSolvers(solverRepository.solverManagers2020)
             HomeCategory.Year2021 -> initSolvers(solverRepository.solverManagers2021)
         }
     }

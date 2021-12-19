@@ -11,7 +11,8 @@ class SolverStateManager(
     val invokeSolver: () -> String,
     val title: String = "Title",
     val description: String = "Description",
-    val image: Int = com.leanderoid.adventofdroid.R.drawable.ic_launcher_foreground
+    val image: Int = com.leanderoid.adventofdroid.R.drawable.ic_launcher_foreground,
+    val link: String = "https://github.com/Leanderoid/advent-of-droid/"
 ) {
     // Set this as a lifecycle aware scope
     lateinit var coroutineScope: CoroutineScope
