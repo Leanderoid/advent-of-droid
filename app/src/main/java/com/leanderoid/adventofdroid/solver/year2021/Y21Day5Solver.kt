@@ -2,6 +2,7 @@ package com.leanderoid.adventofdroid.solver.year2021
 
 import com.leanderoid.adventofdroid.solver.Solver
 import com.leanderoid.adventofdroid.utils.FileUtils
+import com.leanderoid.adventofdroid.utils.Point
 import java.io.InputStream
 
 class Y21Day5Solver : Solver {
@@ -65,8 +66,6 @@ class Y21Day5Solver : Solver {
             Point(dx, start.y+yIndex)
         }
     }
-
-    data class Point(val x: Int, val y: Int)
 
     data class Line(val start: Point, val end: Point)
 }
