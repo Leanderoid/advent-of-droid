@@ -27,7 +27,7 @@ class Y21Day9Solver : Solver {
             }
         }
 
-        return calcSolutionOnMap(stream, strategy)
+        return calcSolution(stream, strategy)
     }
 
     fun solvePart2(stream: InputStream): Int {
@@ -44,10 +44,10 @@ class Y21Day9Solver : Solver {
             }
         }
 
-        return calcSolutionOnMap(stream, strategy)
+        return calcSolution(stream, strategy)
     }
 
-    private fun calcSolutionOnMap(stream: InputStream, strategy: PointStrategy): Int {
+    private fun calcSolution(stream: InputStream, strategy: PointStrategy): Int {
         val lines = FileUtils.streamToList(stream)
 
         lines.indices.forEach { y ->
@@ -60,9 +60,7 @@ class Y21Day9Solver : Solver {
                     eval { lines[y + 1][x].toInt2() > c } &&
                     eval { lines[y - 1][x].toInt2() > c }
 
-                if (lowPoint) {
-                    strategy.onLowPoint(x, y, lines)
-                }
+                if (lowPoint) strategy.onLowPoint(x, y, lines)
             }
         }
 
@@ -85,12 +83,12 @@ class Y21Day9Solver : Solver {
             val height = lines[p.y][p.x].toInt2()
 
             listOf(
-                Pair(p.x - 1, p.y),
-                Pair(p.x + 1, p.y),
-                Pair(p.x, p.y - 1),
-                Pair(p.x, p.y + 1),
+                Point(p.x - 1, p.y),
+                Point(p.x + 1, p.y),
+                Point(p.x, p.y - 1),
+                Point(p.x, p.y + 1),
             ).forEach {
-                checkNewPoint(checked, it.first, it.second, lines, height, toCheck)
+                checkNewPoint(checked, it.x, it.y, lines, height, toCheck)
             }
         }
 
@@ -115,8 +113,8 @@ class Y21Day9Solver : Solver {
         return this.toString().toInt()
     }
 
-    private fun eval(tryLowLeft: () -> Boolean) = try {
-        tryLowLeft()
+    private fun eval(tryPoint: () -> Boolean) = try {
+        tryPoint()
     } catch (e: Exception) {
         true
     }
