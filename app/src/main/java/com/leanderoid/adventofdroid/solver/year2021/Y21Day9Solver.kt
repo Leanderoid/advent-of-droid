@@ -77,7 +77,6 @@ class Y21Day9Solver : Solver {
 
         while (toCheck.isNotEmpty()) {
             val p = toCheck.first()
-            checked.add(p)
             toCheck.remove(p)
 
             val height = lines[p.y][p.x].toInt2()
@@ -88,25 +87,25 @@ class Y21Day9Solver : Solver {
                 Point(p.x, p.y - 1),
                 Point(p.x, p.y + 1),
             ).forEach {
-                checkNewPoint(checked, it.x, it.y, lines, height, toCheck)
+                if (newPointInBasin(checked, it.x, it.y, lines, height)) toCheck.add(it)
             }
+
+            checked.add(p)
         }
 
         return checked.size
     }
 
-    private fun checkNewPoint(
+    private fun newPointInBasin(
         checked: MutableSet<Point>,
         x: Int,
         y: Int,
         lines: List<String>,
         height: Int,
-        toCheck: MutableSet<Point>
-    ) {
-        if (x !in 0..lines.first().lastIndex || y !in 0..lines.lastIndex) return
+    ): Boolean {
+        if (x !in 0..lines.first().lastIndex || y !in 0..lines.lastIndex) return false
 
-        if (!checked.contains(Point(x, y)) && lines[y][x].toInt2() > height && lines[y][x].toInt2() != 9)
-            toCheck.add(Point(x, y))
+        return !checked.contains(Point(x, y)) && lines[y][x].toInt2() > height && lines[y][x].toInt2() != 9
     }
 
     private fun Char.toInt2(): Int {
