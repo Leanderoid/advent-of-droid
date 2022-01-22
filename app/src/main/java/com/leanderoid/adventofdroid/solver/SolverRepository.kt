@@ -69,7 +69,11 @@ class SolverRepository(private val context: Context) {
         SolverMetaData(Y21Day9Solver(), Pair(
             "Find the sum of the risk levels on all low points",
             "Find the three largest basin sizes and multiply them",
-        ))
+        )),
+        SolverMetaData(Y21Day10Solver(), Pair(
+            "Calculate errors of chunks in line and its score",
+            "Calculate the correct ending of chunks and its score"
+        )),
     )
 
     val solverManagers2020 = solver2020Map.mapIndexed { index, it ->
