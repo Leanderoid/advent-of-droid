@@ -1,13 +1,14 @@
 package com.leanderoid.adventofdroid.solver
 
 import android.content.Context
-import com.leanderoid.adventofdroid.solver.year2020.Day1Solver
-import com.leanderoid.adventofdroid.solver.year2020.Day2Solver
+import com.leanderoid.adventofdroid.solver.year2020.Y20Day1Solver
+import com.leanderoid.adventofdroid.solver.year2020.Y20Day2Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
-import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
+import com.leanderoid.adventofdroid.solver.year2020.Y20Day4Solver
 import com.leanderoid.adventofdroid.solver.year2021.*
 import com.leanderoid.adventofdroid.solver.year2022.Y22Day1Solver
 import com.leanderoid.adventofdroid.solver.year2022.Y22Day2Solver
+import com.leanderoid.adventofdroid.solver.year2022.Y22Day3Solver
 import com.leanderoid.adventofdroid.utils.FileUtils
 
 class SolverRepository(private val context: Context) {
@@ -17,11 +18,11 @@ class SolverRepository(private val context: Context) {
     data class SolverMetaData(val solver: Solver, val description: Pair<String, String>)
 
     private val solver2020Map = listOf(
-        SolverMetaData(Day1Solver(), Pair(
+        SolverMetaData(Y20Day1Solver(), Pair(
             "Find three values in a list that adds up to a specific number. Multiply these values.",
             "Find three values in a list that adds up to a specific number. Multiply these values.",
         )),
-        SolverMetaData(Day2Solver(), Pair(
+        SolverMetaData(Y20Day2Solver(), Pair(
             "How many passwords are valid?",
             "How many passwords are valid?"
         )),
@@ -29,7 +30,7 @@ class SolverRepository(private val context: Context) {
             "How many occurrences?",
             "What's the product of found values?",
         )),
-        SolverMetaData(Day4Solver(), Pair(
+        SolverMetaData(Y20Day4Solver(), Pair(
             "Read, format and check input if valid",
             "Check input against a set of validation rules",
         )),
@@ -93,48 +94,20 @@ class SolverRepository(private val context: Context) {
                 "Calculate sum of strategy.",
             )
         ),
+        SolverMetaData(
+            Y22Day3Solver(),
+            Pair(
+                "Divide elements of a list and find intersection character. Convert char to int and summarize.",
+                "Split list to groups of three and find intersection char. Convert char to int and summarize",
+            ),
+        )
     )
 
-    val solverManagers2020 = solver2020Map.mapIndexed { index, it ->
-        fun file() = FileUtils.getFile(context,"data/year2020/day${index + 1}.txt")
+    val solverManagers2020 = solver2020Map.toManager("20")
+    val solverManagers2021 = solver2021Map.toManager("21")
+    val solverManagers2022 = solver2022Map.toManager("22")
 
-        Pair(
-            SolverStateManager(
-                title = "Day${index+1} p1",
-                description = it.description.first,
-                link = "$linkBase/year2020/Day${index+1}Solver.kt",
-                invokeSolver = { it.solver.solveAndFormat(file()) }
-            ),
-            SolverStateManager(
-                title = "Day${index+1} p2",
-                description = it.description.second,
-                link = "$linkBase/year2020/Day${index+1}Solver.kt",
-                invokeSolver = { it.solver.solveAndFormatPart2(file()) }
-            ),
-        )
-    }.flatMap { listOf(it.first, it.second) }
-
-    val solverManagers2021 = solver2021Map.mapIndexed { index, it ->
-        fun file() = FileUtils.getFile(context,"data/year2021/day${index + 1}.txt")
-
-        Pair(
-            SolverStateManager(
-                title = "Day${index+1} p1",
-                description = it.description.first,
-                link = "$linkBase/year2021/Y21Day${index+1}Solver.kt",
-                invokeSolver = { it.solver.solveAndFormat(file()) }
-            ),
-            SolverStateManager(
-                title = "Day${index+1} p2",
-                description = it.description.second,
-                link = "$linkBase/year2021/Y21Day${index+1}Solver.kt",
-                invokeSolver = { it.solver.solveAndFormatPart2(file()) }
-            ),
-        )
-    }.flatMap { listOf(it.first, it.second) }
-
-    val solverManagers2022 = solver2022Map.mapIndexed { index, it ->
-        val yearSpec = "22"
+    private fun List<SolverMetaData>.toManager(yearSpec: String) = mapIndexed { index, it ->
         fun file() = FileUtils.getFile(context,"data/year20$yearSpec/day${index + 1}.txt")
 
         Pair(

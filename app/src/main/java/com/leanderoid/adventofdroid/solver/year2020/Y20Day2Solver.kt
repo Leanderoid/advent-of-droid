@@ -4,7 +4,7 @@ import com.leanderoid.adventofdroid.solver.Solver
 import com.leanderoid.adventofdroid.utils.FileUtils.streamToList
 import java.io.InputStream
 
-class Day2Solver : Solver {
+class Y20Day2Solver : Solver {
 
     override fun solveAndFormat(stream: InputStream): String {
         return solve(stream).toString()

@@ -5,7 +5,7 @@ import com.leanderoid.adventofdroid.utils.FileUtils
 import java.io.InputStream
 import kotlin.math.abs
 
-class Day3SolverOld : Solver, IDay3Solver {
+class Y20Day3SolverOld : Solver, IDay3Solver {
 
     override fun solve(stream: InputStream): Int {
         val list = FileUtils.streamToList(stream)

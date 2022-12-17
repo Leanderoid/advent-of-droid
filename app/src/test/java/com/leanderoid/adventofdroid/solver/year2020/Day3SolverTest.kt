@@ -1,9 +1,6 @@
 package com.leanderoid.adventofdroid.solver.year2020
 
 import com.leanderoid.adventofdroid.utils.FileUtils.toInputStream
-import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
-import com.leanderoid.adventofdroid.solver.year2020.Day3SolverOld
-import com.leanderoid.adventofdroid.solver.year2020.IDay3Solver
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -34,10 +31,10 @@ class Day3SolverTest {
     fun day3_part2() = performPart2Test(Day3Solver())
 
     @Test
-    fun day3_old_part2() = performPart2Test(Day3SolverOld())
+    fun day3_old_part2() = performPart2Test(Y20Day3SolverOld())
 
     @Test
-    fun day3_old() = performPart1Test(Day3SolverOld())
+    fun day3_old() = performPart1Test(Y20Day3SolverOld())
 
     private fun performPart1Test(solver: IDay3Solver) {
         // Arrange

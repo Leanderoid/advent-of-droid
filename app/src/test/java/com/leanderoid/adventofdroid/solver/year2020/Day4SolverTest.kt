@@ -1,7 +1,6 @@
 package com.leanderoid.adventofdroid.solver.year2020
 
 import com.leanderoid.adventofdroid.utils.FileUtils.toInputStream
-import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -13,7 +12,7 @@ class Day4SolverTest {
         val inputStream = "src/main/assets/data/year2020/day4testinput.txt".toInputStream()
 
         // Act
-        val count = Day4Solver().solve(inputStream)
+        val count = Y20Day4Solver().solve(inputStream)
 
         // Assert
         assertEquals(2, count)
@@ -25,7 +24,7 @@ class Day4SolverTest {
         val inputStream = "src/main/assets/data/year2020/day4.txt".toInputStream()
 
         // Act
-        val count = Day4Solver().solve(inputStream)
+        val count = Y20Day4Solver().solve(inputStream)
 
         // Assert
         assertEquals(216, count)
@@ -37,7 +36,7 @@ class Day4SolverTest {
         val inputStream = "src/main/assets/data/year2020/day4testinput.txt".toInputStream()
 
         // Act
-        val count = Day4Solver().solvePart2(inputStream)
+        val count = Y20Day4Solver().solvePart2(inputStream)
 
         // Assert
         assertEquals(2, count)
@@ -49,7 +48,7 @@ class Day4SolverTest {
         val inputStream = "src/main/assets/data/year2020/day4.txt".toInputStream()
 
         // Act
-        val count = Day4Solver().solvePart2(inputStream)
+        val count = Y20Day4Solver().solvePart2(inputStream)
 
         // Assert
         assertEquals(150, count)

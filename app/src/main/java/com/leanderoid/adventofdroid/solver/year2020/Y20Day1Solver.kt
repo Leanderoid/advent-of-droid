@@ -5,7 +5,7 @@ import com.leanderoid.adventofdroid.solver.SolverResult
 import com.leanderoid.adventofdroid.utils.FileUtils.streamToList
 import java.io.InputStream
 
-class Day1Solver: Solver {
+class Y20Day1Solver: Solver {
 
     override fun solveAndFormat(stream: InputStream): String {
         val (a, b, product) = solve(stream)

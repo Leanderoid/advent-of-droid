@@ -1,7 +1,6 @@
 package com.leanderoid.adventofdroid.solver.year2020
 
 import com.leanderoid.adventofdroid.utils.FileUtils.toInputStream
-import com.leanderoid.adventofdroid.solver.year2020.Day1Solver
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -16,7 +15,7 @@ class Day1SolverTest {
         val inputStream = "src/main/assets/data/year2020/day1testinput.txt".toInputStream()
 
         // Act
-        val (_, _, product) = Day1Solver().solve(inputStream)
+        val (_, _, product) = Y20Day1Solver().solve(inputStream)
 
         // Assert
         assertEquals(514579, product)
@@ -26,7 +25,7 @@ class Day1SolverTest {
     fun day1() {
         val inputStream = "src/main/assets/data/year2020/day1.txt".toInputStream()
 
-        val (_, _, product) = Day1Solver().solve(inputStream)
+        val (_, _, product) = Y20Day1Solver().solve(inputStream)
 
         assertEquals(786811, product)
 
@@ -40,7 +39,7 @@ class Day1SolverTest {
     fun day1_testData_part2() {
         val inputStream = "src/main/assets/data/year2020/day1testinput.txt".toInputStream()
 
-        val (values, product) = Day1Solver().solvePart2(inputStream)
+        val (values, product) = Y20Day1Solver().solvePart2(inputStream)
 
         println("values multiplied: ${values.first} * ${values.second} * ${values.third} = ${values.first * values.second * values.third} = $product")
         assertEquals(241861950, product)
@@ -50,7 +49,7 @@ class Day1SolverTest {
     fun day1_part2() {
         val inputStream = "src/main/assets/data/year2020/day1.txt".toInputStream()
 
-        val (values, product) = Day1Solver().solvePart2(inputStream)
+        val (values, product) = Y20Day1Solver().solvePart2(inputStream)
 
         println("values multiplied: ${values.first} * ${values.second} * ${values.third} = ${values.first * values.second * values.third} = $product")
         assertEquals(199068980, product)

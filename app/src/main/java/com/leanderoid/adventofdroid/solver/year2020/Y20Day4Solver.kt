@@ -4,7 +4,7 @@ import com.leanderoid.adventofdroid.solver.Solver
 import java.io.BufferedReader
 import java.io.InputStream
 
-class Day4Solver : Solver {
+class Y20Day4Solver : Solver {
 
     fun solve(stream: InputStream): Int {
         val str = stream.bufferedReader().use(BufferedReader::readText)
