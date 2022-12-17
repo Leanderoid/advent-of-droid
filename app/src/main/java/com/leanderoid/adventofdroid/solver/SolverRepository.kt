@@ -1,14 +1,15 @@
 package com.leanderoid.adventofdroid.solver
 
 import android.content.Context
+import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
 import com.leanderoid.adventofdroid.solver.year2020.Y20Day1Solver
 import com.leanderoid.adventofdroid.solver.year2020.Y20Day2Solver
-import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
 import com.leanderoid.adventofdroid.solver.year2020.Y20Day4Solver
 import com.leanderoid.adventofdroid.solver.year2021.*
 import com.leanderoid.adventofdroid.solver.year2022.Y22Day1Solver
 import com.leanderoid.adventofdroid.solver.year2022.Y22Day2Solver
 import com.leanderoid.adventofdroid.solver.year2022.Y22Day3Solver
+import com.leanderoid.adventofdroid.solver.year2022.Y22Day4Solver
 import com.leanderoid.adventofdroid.utils.FileUtils
 
 class SolverRepository(private val context: Context) {
@@ -100,7 +101,14 @@ class SolverRepository(private val context: Context) {
                 "Divide elements of a list and find intersection character. Convert char to int and summarize.",
                 "Split list to groups of three and find intersection char. Convert char to int and summarize",
             ),
-        )
+        ),
+        SolverMetaData(
+            Y22Day4Solver(),
+            Pair(
+                "Determine if pairs of ranges fully overlap. Count occurrences",
+                "Determine if pairs of ranges just overlap. Count occurrences",
+            ),
+        ),
     )
 
     val solverManagers2020 = solver2020Map.toManager("20")
