@@ -83,6 +83,7 @@ private fun HomeCategoryTabs(
                         text = when (category) {
                             HomeCategory.Year2020 -> stringResource(R.string.year2020)
                             HomeCategory.Year2021 -> stringResource(R.string.year2021)
+                            HomeCategory.Year2022 -> stringResource(R.string.year2022)
                         },
                         style = MaterialTheme.typography.body2
                     )

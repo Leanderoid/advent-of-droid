@@ -6,6 +6,8 @@ import com.leanderoid.adventofdroid.solver.year2020.Day2Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day3Solver
 import com.leanderoid.adventofdroid.solver.year2020.Day4Solver
 import com.leanderoid.adventofdroid.solver.year2021.*
+import com.leanderoid.adventofdroid.solver.year2022.Y22Day1Solver
+import com.leanderoid.adventofdroid.solver.year2022.Y22Day2Solver
 import com.leanderoid.adventofdroid.utils.FileUtils
 
 class SolverRepository(private val context: Context) {
@@ -76,6 +78,23 @@ class SolverRepository(private val context: Context) {
         )),
     )
 
+    private val solver2022Map = listOf(
+        SolverMetaData(
+            Y22Day1Solver(),
+            Pair(
+                "Calculate sums of groups and find max value",
+                "Calculate sums of groups and find tot value of the largest groups",
+            )
+        ),
+        SolverMetaData(
+            Y22Day2Solver(),
+            Pair(
+                "Calculate sum of strategy.",
+                "Calculate sum of strategy.",
+            )
+        ),
+    )
+
     val solverManagers2020 = solver2020Map.mapIndexed { index, it ->
         fun file() = FileUtils.getFile(context,"data/year2020/day${index + 1}.txt")
 
@@ -109,6 +128,26 @@ class SolverRepository(private val context: Context) {
                 title = "Day${index+1} p2",
                 description = it.description.second,
                 link = "$linkBase/year2021/Y21Day${index+1}Solver.kt",
+                invokeSolver = { it.solver.solveAndFormatPart2(file()) }
+            ),
+        )
+    }.flatMap { listOf(it.first, it.second) }
+
+    val solverManagers2022 = solver2022Map.mapIndexed { index, it ->
+        val yearSpec = "22"
+        fun file() = FileUtils.getFile(context,"data/year20$yearSpec/day${index + 1}.txt")
+
+        Pair(
+            SolverStateManager(
+                title = "Day${index+1} p1",
+                description = it.description.first,
+                link = "$linkBase/year20$yearSpec/Y${yearSpec}Day${index+1}Solver.kt",
+                invokeSolver = { it.solver.solveAndFormat(file()) }
+            ),
+            SolverStateManager(
+                title = "Day${index+1} p2",
+                description = it.description.second,
+                link = "$linkBase/year20$yearSpec/Y${yearSpec}Day${index+1}Solver.kt",
                 invokeSolver = { it.solver.solveAndFormatPart2(file()) }
             ),
         )

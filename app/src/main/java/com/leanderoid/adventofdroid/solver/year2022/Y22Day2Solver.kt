@@ -52,38 +52,33 @@ class Y22Day2Solver : Solver {
     )
 
     fun solve(stream: InputStream): Int =
-        FileUtils.streamToList(stream)
-            .map {
-                val me = codeMap[it[2]]!!
-                val them = codeMap[it[0]]!!
+        FileUtils.streamToList(stream).sumOf { row ->
+            val me = codeMap[row[2]]!!
+            val them = codeMap[row[0]]!!
 
-                battlePoints[me][them]!! + typePoints[me]!!
-            }
-            .sum()
-
+            battlePoints[me][them]!! + typePoints[me]!!
+        }
 
     // X, Y, Z
     // Lose, Draw, Win
     private val orderPoints = listOf(0, 3, 6)
 
-    fun solvePart2(stream: InputStream) = FileUtils.streamToList(stream)
-        .map {
-            val order = codeMap[it[2]]!!
-            val orderPoint = orderPoints[order]
-            val them = codeMap[it[0]]!!
+    fun solvePart2(stream: InputStream) =
+        FileUtils.streamToList(stream)
+            .map { row ->
+                val orderType = codeMap[row[2]]!!
+                val them = codeMap[row[0]]!!
 
-            // .reversed() because checking from perspective of them to get it right.
-            val meType = battlePoints[them].firstNotNullOf { typeRow ->
-                val typeMatchesTheOrderedOutcome = typeRow.value == orderPoints.reversed()[order]
-                if(typeMatchesTheOrderedOutcome) typeRow.key else null
+                val meType = battlePoints[them].firstNotNullOf { typeRow ->
+                    val typeMatchesTheOrderedOutcome =
+                        // Use .reversed() because checking from perspective of them to get it right.
+                        typeRow.value == orderPoints.reversed()[orderType]
+
+                    if (typeMatchesTheOrderedOutcome) typeRow.key else null
+                }
+
+                orderPoints[orderType] + typePoints[meType]!!
+            }.sumOf {
+                it
             }
-
-            println("them: $them, order: $orderPoint, meType: $meType, typeP: ${typePoints[meType]}")
-            orderPoint + typePoints[meType]!!
-        }
-        .map {
-            println(it)
-            it
-        }
-        .sum()
 }

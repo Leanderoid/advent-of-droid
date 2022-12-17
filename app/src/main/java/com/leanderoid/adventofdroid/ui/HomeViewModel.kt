@@ -45,6 +45,7 @@ class HomeViewModel(
         solvers.value = when (category) {
             HomeCategory.Year2020 -> initSolvers(solverRepository.solverManagers2020)
             HomeCategory.Year2021 -> initSolvers(solverRepository.solverManagers2021)
+            HomeCategory.Year2022 -> initSolvers(solverRepository.solverManagers2022)
         }
     }
 
@@ -55,7 +56,7 @@ class HomeViewModel(
 }
 
 enum class HomeCategory {
-    Year2020, Year2021
+    Year2020, Year2021, Year2022,
 }
 
 data class HomeViewState(
