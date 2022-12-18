@@ -113,6 +113,13 @@ class SolverRepository(private val context: Context) {
                 "Move letters between lists",
             ),
         ),
+        SolverMetaData(
+            Y22Day6Solver(),
+            Pair(
+                "Find distinct marker of size 4",
+                "Find distinct marker of size 14",
+            ),
+        ),
     )
 
     val solverManagers2020 = solver2020Map.toManager("20")
