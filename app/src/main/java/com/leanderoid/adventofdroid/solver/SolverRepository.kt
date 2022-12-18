@@ -6,10 +6,7 @@ import com.leanderoid.adventofdroid.solver.year2020.Y20Day1Solver
 import com.leanderoid.adventofdroid.solver.year2020.Y20Day2Solver
 import com.leanderoid.adventofdroid.solver.year2020.Y20Day4Solver
 import com.leanderoid.adventofdroid.solver.year2021.*
-import com.leanderoid.adventofdroid.solver.year2022.Y22Day1Solver
-import com.leanderoid.adventofdroid.solver.year2022.Y22Day2Solver
-import com.leanderoid.adventofdroid.solver.year2022.Y22Day3Solver
-import com.leanderoid.adventofdroid.solver.year2022.Y22Day4Solver
+import com.leanderoid.adventofdroid.solver.year2022.*
 import com.leanderoid.adventofdroid.utils.FileUtils
 
 class SolverRepository(private val context: Context) {
@@ -107,6 +104,13 @@ class SolverRepository(private val context: Context) {
             Pair(
                 "Determine if pairs of ranges fully overlap. Count occurrences",
                 "Determine if pairs of ranges just overlap. Count occurrences",
+            ),
+        ),
+        SolverMetaData(
+            Y22Day5Solver(),
+            Pair(
+                "Move letters between lists",
+                "Move letters between lists",
             ),
         ),
     )

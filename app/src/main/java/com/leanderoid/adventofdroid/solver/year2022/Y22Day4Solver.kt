@@ -23,11 +23,11 @@ class Y22Day4Solver : Solver {
 
         a.intersectSize(b) > 0
     }
-}
 
-private fun String.intersectSize(b: String) = toRange().intersect(b.toRange()).size
+    private fun String.intersectSize(b: String) = toRange().intersect(b.toRange()).size
 
-private fun String.toRange(): IntRange {
-    val (first, last) = split('-')
-    return first.toInt()..last.toInt()
+    private fun String.toRange(): IntRange {
+        val (first, last) = split('-')
+        return first.toInt()..last.toInt()
+    }
 }

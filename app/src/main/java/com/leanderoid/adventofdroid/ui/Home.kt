@@ -31,7 +31,7 @@ fun Home(
     val colorVariant =
         if (selectedHomeCategory == HomeCategory.Year2020) MaterialTheme.colors.primary else MaterialTheme.colors.secondaryVariant
     Text(
-        text = "Advent of Droid",
+        text = stringResource(id = R.string.title),
         modifier = Modifier
             .padding(all = 20.dp),
         color = colorVariant
